@@ -1,6 +1,6 @@
 # [clean-electron-react](https://github.com/matthiaaas/clean-electron-react)
 
-`clean-electron-react` is an Electron boilerplate including only [React](https://github.com/electron/electron), [Babel](https://github.com/babel/babel) and [Webpack](https://github.com/webpack/webpack) in order to provide the cleanest possible setup experience.
+`clean-electron-react` is an Electron boilerplate including a fresh setup of [React](https://github.com/facebook/react), [Typescript](https://github.com/microsoft/typescript), [Babel](https://github.com/babel/babel) and [Webpack](https://github.com/webpack/webpack) in order to provide the cleanest possible setup experience.
 
 ###### Notice: This boilerplate is still in development
 
@@ -25,7 +25,7 @@ yarn dev
 
 You can now start building your app:
 
-### app/[app.js](https://github.com/matthiaaas/clean-electron-react/tree/master/app/app.js) (electron entry)
+### app/[app.js](https://github.com/matthiaaas/clean-electron-react/tree/main/app/app.js) (electron entry)
 
 ```js
 const createWindow = () => {
@@ -45,11 +45,11 @@ const createWindow = () => {
 app.whenReady().then(createWindow)
 ```
 
-### app/components/[App.jsx](https://github.com/matthiaaas/clean-electron-react/tree/master/app/components/App.jsx)
+### app/components/[App.tsx](https://github.com/matthiaaas/clean-electron-react/tree/main/app/components/App.tsx)
 
 ```js
 export default function App() {
-  return null
+  return <div />
 }
 ```
 
@@ -71,12 +71,14 @@ This template is preconfigured from scratch and only includes essential parts an
 ```c
 ├── app
     ├── components
-    │   └── App.jsx // rendered component
-    ├── app.js // electron entry file
+    │   └── App.tsx // rendered component
+    ├── app.ts // electron entry file
     ├── index.html
-    ├── index.js // react renderer
+    ├── index.ts // react renderer
     └── manifest.json
 ├── build // webpack build output
 ├── dist // electron-builder output
-└── package.json
+├── package.json
+├── tsconfig.json
+└── webpack.config.js
 ```

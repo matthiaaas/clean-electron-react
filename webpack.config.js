@@ -2,15 +2,24 @@ const path = require("path")
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 
 module.exports = {
-  entry: "./app/index.js",
+  entry: "./app/index.tsx",
   output: {
     path: path.resolve("build"),
     filename: "bundle.js"
   },
   target: "electron-renderer",
-  mode: "development",
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+        resolve: {
+          extensions: [
+            ".ts", ".tsx"
+          ]
+        },
+        exclude: /node_modules/
+      },
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
@@ -29,7 +38,7 @@ module.exports = {
   },
   devServer: {
     port: 8080,
-    contentBase: [ "./app" ],
+    contentBase: "app",
     inline: true,
     hot: true,
     stats: "errors-only",
