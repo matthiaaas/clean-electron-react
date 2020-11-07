@@ -72,9 +72,9 @@ This template is preconfigured from scratch and only includes essential parts an
 ├── app
     ├── components
     │   └── App.tsx // rendered component
-    ├── app.ts // electron entry file
+    ├── app.js // electron entry file
     ├── index.html
-    ├── index.ts // react renderer
+    ├── index.tsx // react renderer
     └── manifest.json
 ├── build // webpack build output
 ├── dist // electron-builder output
