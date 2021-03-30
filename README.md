@@ -41,6 +41,7 @@ const createWindow = () => {
   })
 
   win.show()
+}
 
 app.whenReady().then(createWindow)
 ```
