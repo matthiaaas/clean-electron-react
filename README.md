@@ -1,6 +1,6 @@
 # [clean-electron-react](https://github.com/matthiaaas/clean-electron-react)
 
-`clean-electron-react` is an Electron boilerplate including a fresh setup of [React](https://github.com/facebook/react), [Typescript](https://github.com/microsoft/typescript), [Babel](https://github.com/babel/babel) and [Webpack](https://github.com/webpack/webpack) in order to provide the cleanest possible setup experience.
+`clean-electron-react` is an Electron boilerplate including a fresh setup of [React](https://github.com/facebook/react), [Typescript](https://github.com/microsoft/typescript) [Prettier](https://github.com/prettier/prettier) and [Webpack](https://github.com/webpack/webpack) in order to provide the cleanest possible setup experience.
 
 ###### Notice: This boilerplate is still in development
 
@@ -19,24 +19,25 @@ yarn
 Start the `webpack-dev-server` and listen for file changes (supports hot reloading). Then start Electron.
 
 ```
+yarn build
 yarn watch
 yarn dev
 ```
 
 You can now start building your app:
 
-### app/[app.js](https://github.com/matthiaaas/clean-electron-react/tree/main/app/app.js) (electron entry)
+### app/[app.ts](https://github.com/matthiaaas/clean-electron-react/tree/main/app/app.ts) (electron entry)
 
-```js
+```ts
 const createWindow = () => {
-  // initial window config
   const win = new BrowserWindow({
-    width: 800,
-    height: 500,
+    width: 820,
+    height: 532,
     frame: false,
     titleBarStyle: "hiddenInset",
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false
     }
   })
 
@@ -48,9 +49,9 @@ app.whenReady().then(createWindow)
 
 ### app/components/[App.tsx](https://github.com/matthiaaas/clean-electron-react/tree/main/app/components/App.tsx)
 
-```js
+```tsx
 export default function App() {
-  return <div />
+  return null
 }
 ```
 
@@ -59,7 +60,7 @@ export default function App() {
 Package your app using `electron-builder`. Output can be found in `/dist`
 
 ```
-yarn build
+yarn package
 ```
 
 ## Why another boilerplate?
@@ -73,9 +74,9 @@ This template is preconfigured from scratch and only includes essential parts an
 ├── app
     ├── components
     │   └── App.tsx // rendered component
-    ├── app.js // electron entry file
+    ├── app.ts // electron entry file
     ├── index.html
-    ├── index.tsx // react renderer
+    ├── root.tsx // react renderer
     └── manifest.json
 ├── build // webpack build output
 ├── dist // electron-builder output

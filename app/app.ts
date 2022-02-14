@@ -1,28 +1,33 @@
-const path = require("path")
-const isDev = require("electron-is-dev")
-const { app, BrowserWindow } = require("electron")
+import path from "path"
+import { app, BrowserWindow } from "electron"
+
+import { isDev } from "./utils/electron"
 
 const isMac = process.platform === "darwin"
 
-const createWindow = () => {
-  // initial window config
+const createWindow = async () => {
   const win = new BrowserWindow({
     width: 820,
     height: 532,
     frame: false,
     titleBarStyle: "hiddenInset",
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false
     }
   })
 
-  win.loadURL(isDev ? "http://localhost:8080" : `file://${path.join(__dirname, "../build/index.html")}`)
+  await win.loadURL(
+    isDev()
+      ? "http://localhost:8080"
+      : `file://${path.join(__dirname, "../build/index.html")}`
+  )
 }
 
 app.whenReady().then(createWindow)
 
 app.on("window-all-closed", () => {
-  if (isMac) {
+  if (!isMac) {
     app.quit()
   }
 })
