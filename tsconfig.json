@@ -1,17 +1,30 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./app/*"
+      ]
+    },
     "jsx": "react",
     "module": "commonjs",
-    "noImplicitAny": true,
     "noImplicitReturns": false,
     "outDir": "./build/",
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "target": "es5"
   },
   "include": [
-    "app/index.tsx"
+    "app/root.tsx",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist"
   ]
 }
